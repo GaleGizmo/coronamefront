@@ -9,12 +9,15 @@
       crossorigin="anonymous"
     />
     <!-- En tu archivo HTML -->
-<link href="node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link
+      href="node_modules/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
 
     <link rel="stylesheet" href="styles.css" />
     <title>TORMENTA DE IDEAS</title>
     <script src="main.js" defer></script>
-    <meta name="robots" content="noindex, nofollow">
+    <meta name="robots" content="noindex, nofollow" />
   </head>
   <body>
     <header class="header">
@@ -23,10 +26,16 @@
     <main class="container-fluid" id="main">
       <div id="names_container">
         <form class="form" id="names_form">
-          <i class="bi bi-plus-circle-fill icon-add hidden"></i>
+          <i class="icon-add hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z"/>
+            </svg>
+          </i>
           <!-- Campo input con el nombre propuesto-->
           <div id="name_div" class="mb-3 shown">
-            <label class="form-label" id="choir_name_label">Nome suxerido:</label>
+            <label class="form-label" id="choir_name_label"
+              >Nome suxerido:</label
+            >
             <input
               class="form-control"
               type="text"
@@ -37,8 +46,6 @@
             />
           </div>
 
-         
-
           <!-- Menú desplegable con los coristas-->
           <div id="corista_div" class="mb-3 shown">
             <label class="form-label" id="choir_member_label">Corista:</label>
@@ -48,8 +55,6 @@
               name="choir_member"
             ></select>
           </div>
-
-         
 
           <!-- Campo de área de texto para motivo del nombre-->
           <div id="motivo_div" class="mb-3 shown">
@@ -62,8 +67,6 @@
               placeholder="Gústame este nome porque..."
             ></textarea>
           </div>
-
-         
 
           <button class="btn btn-primary shown" id="send_name" type="submit">
             Enviar
