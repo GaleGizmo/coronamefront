@@ -8,6 +8,9 @@
       rel="stylesheet"
       crossorigin="anonymous"
     />
+    <!-- En tu archivo HTML -->
+<link href="node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
     <link rel="stylesheet" href="styles.css" />
     <title>TORMENTA DE IDEAS</title>
     <script src="main.js" defer></script>
@@ -20,8 +23,9 @@
     <main class="container-fluid" id="main">
       <div id="names_container">
         <form class="form" id="names_form">
+          <i class="bi bi-plus-circle-fill icon-add hidden"></i>
           <!-- Campo input con el nombre propuesto-->
-          <div class="mb-3">
+          <div id="name_div" class="mb-3 shown">
             <label class="form-label" id="choir_name_label">Nome suxerido:</label>
             <input
               class="form-control"
@@ -29,13 +33,14 @@
               id="choir_name"
               name="choir_name"
               placeholder="Suxiro o nome..."
+              required
             />
           </div>
 
          
 
           <!-- Menú desplegable con los coristas-->
-          <div class="mb-3">
+          <div id="corista_div" class="mb-3 shown">
             <label class="form-label" id="choir_member_label">Corista:</label>
             <select
               class="form-select"
@@ -47,7 +52,7 @@
          
 
           <!-- Campo de área de texto para motivo del nombre-->
-          <div class="mb-3">
+          <div id="motivo_div" class="mb-3 shown">
             <label class="form-label" id="name_reason_label">Motivo:</label>
             <textarea
               class="form-control"
@@ -60,7 +65,7 @@
 
          
 
-          <button class="btn btn-primary" id="send_name" type="submit">
+          <button class="btn btn-primary shown" id="send_name" type="submit">
             Enviar
           </button>
         </form>
