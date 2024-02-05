@@ -47,3 +47,20 @@
 main{
     margin-top: 50px;
 }
+@media (width<720px){
+    .form{
+        position: unset;
+    }
+    #names_container{
+        flex-direction: column;
+        padding: 0 5%;
+    }
+    .header{
+        font-size: medium;
+        height: 30px;
+    }
+    .card_name{
+        width: 100%;
+    }
+   
+}
