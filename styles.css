@@ -1,7 +1,9 @@
 
 
 .form {
-  width: fit-content;
+  width: 20vw;
+  min-width: 200px;
+  
   margin: 0 auto;
   position: fixed;
   left: 10px;
@@ -18,10 +20,15 @@
 #names_container {
   display: flex;
   position: relative;
+  justify-content: center;
   padding: 0 20%;
 }
 #show_names {
+    width: fit-content;
   padding-top: 10px;
+  margin: 0 auto;
+ 
+  
 }
 .header {
   padding-top: 10px;
@@ -66,6 +73,7 @@ main {
   .form {
     position: relative;
     top: 0;
+    width: 80%;
   }
   #names_container {
     flex-direction: column;
