@@ -25,53 +25,7 @@
     </header>
     <main class="container-fluid" id="main">
       <div id="names_container">
-        <form class="form" id="names_form">
-          <i class="icon-add hidden">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
-              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z"/>
-            </svg>
-          </i>
-          <!-- Campo input con el nombre propuesto-->
-          <div id="name_div" class="mb-3 shown">
-            <label class="form-label" id="choir_name_label"
-              >Nome suxerido:</label
-            >
-            <input
-              class="form-control"
-              type="text"
-              id="choir_name"
-              name="choir_name"
-              placeholder="Suxiro o nome..."
-              required
-            />
-          </div>
-
-          <!-- Menú desplegable con los coristas-->
-          <div id="corista_div" class="mb-3 shown">
-            <label class="form-label" id="choir_member_label">Corista:</label>
-            <select
-              class="form-select"
-              id="choir_member"
-              name="choir_member"
-            ></select>
-          </div>
-
-          <!-- Campo de área de texto para motivo del nombre-->
-          <div id="motivo_div" class="mb-3 shown">
-            <label class="form-label" id="name_reason_label">Motivo:</label>
-            <textarea
-              class="form-control"
-              id="name_reason"
-              name="name_reason"
-              rows="4"
-              placeholder="Gústame este nome porque..."
-            ></textarea>
-          </div>
-
-          <button class="btn btn-primary shown" id="send_name" type="submit">
-            Enviar
-          </button>
-        </form>
+        
         <div class="container text-center" id="show_names"></div>
       </div>
     </main>
