@@ -8,25 +8,31 @@
       rel="stylesheet"
       crossorigin="anonymous"
     />
-    <!-- En tu archivo HTML -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
     <link
       href="node_modules/bootstrap-icons/font/bootstrap-icons.css"
       rel="stylesheet"
     />
 
     <link rel="stylesheet" href="styles.css" />
-    <title>TORMENTA DE IDEAS</title>
-    <script src="main.js" defer></script>
+    <title>VOTACION RONDA 1</title>
+    
     <meta name="robots" content="noindex, nofollow" />
   </head>
   <body>
     <header class="header">
       <div class="header-title">NOMES PARA O CORO</div>
+      <button id="send_votes" class="btn btn-primary">Mandar votos</button>
     </header>
     <main class="container-fluid" id="main">
+      <div id="select_name">
+        <h2>Escolle o teu nome da lista</h2>
+        <select id="coristas" class="form-select w-auto"></select>
+        <button id="set_corista" class="btn btn-primary mt-5">Confirmar</button>
+      </div>
       <div id="names_container">
         
-        <div class="container text-center" id="show_names"></div>
+        <div class="container-fluid text-center" id="show_names"></div>
       </div>
     </main>
 
@@ -35,5 +41,7 @@
       integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+    <script src="main.js" ></script>
   </body>
 </html>
