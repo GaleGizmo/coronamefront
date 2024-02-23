@@ -44,7 +44,15 @@ const drawNames = (names) => {
   const namesList$$ = document.getElementById("show_names");
   namesList$$.innerHTML = "";
 
-  const sortedNames = names.sort((a, b) => b.points - a.points);
+  const sortedNames = names.sort((a, b) =>{
+    if (a.points === b.points) {
+      // Orden alfabético si los puntos son iguales
+      return a.name.localeCompare(b.name);
+    } else {
+      // Orden por puntos si los puntos son diferentes
+      return b.points - a.points;
+    }
+  });
 
   for (const name of sortedNames) {
     const cardName$$ = document.createElement("div");
@@ -85,7 +93,7 @@ function toggleName(coroName) {
       (name) => name != coroName
     );
   } else {
-    coristaNameParsed.namesVoted.push(coroName);
+    coristaNameParsed.namesVoted?.push(coroName);
   }
 }
 
