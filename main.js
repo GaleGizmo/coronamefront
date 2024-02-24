@@ -202,8 +202,12 @@ const sendVotes = async () => {
       },
       body: JSON.stringify(dataToSend),
     };
+    if (!coristaNameParsed || typeof coristaNameParsed._id === 'undefined') {
+      console.error("Error: coristaNameParsed._id no está definido");
+      return;
+    }
     const response = await fetch(
-      `https://coronamebackend.app.rockthebarrio.es/nombres/addVoto/${coristaNameParsed._id}`,
+      `https://coronamebackend.app.rockthebarrio.es/nombres/addVoto/${coristaNameParsed?._id}`,
       options
     );
     const responseData = await response.json();
