@@ -110,7 +110,7 @@ const getCoristas = async () => {
   const coristas = await data.json();
   if (typeof coristas != "string") {
     coristasList = coristas;
-    console.log(coristasList)
+    
     const coristasNames = coristasList
       .filter((member) => member.name !== "Anónimo").filter((member)=>!member.logged)
       .map((el) => el.name);
@@ -153,12 +153,14 @@ async function setCorista() {
       },
       body: JSON.stringify({ logged: true }),
     };
+    
     const response = await fetch(
-      `https://coronamebackend.app.rockthebarrio.es/editCorista/${coristaId}`,
+      `https://coronamebackend.app.rockthebarrio.es/coristas/editCorista/${coristaId}`,
       options
     );
-      console.log(response);
+    
     if (response.ok) {
+      const data = await response.json(); console.log("Respuesta", data);
       coristaData[0].logged = true;
 
       notyf.open({
