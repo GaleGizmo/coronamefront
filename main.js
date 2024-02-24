@@ -175,7 +175,7 @@ async function setCorista() {
 }
 
 const sendVotes = async () => {
-  if (!coristaNameParsed.namesVoted.length) {
+  if (coristaNameParsed.namesVoted?.length==0) {
     notyf.error({
       message: "Non marcaches ningún nome",
       duration: 2000,
