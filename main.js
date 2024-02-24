@@ -2,7 +2,7 @@
 
 const menuCoristas = document.getElementById("select_name");
 
-let coristaNameParsed = "";
+let coristaNameParsed = JSON.parse(localStorage.getItem("coristaName"))
 const notyf = new Notyf({
   types: [
     {
@@ -18,10 +18,10 @@ const notyf = new Notyf({
 });
 
 function checkCorista() {
-  const coristaName = localStorage.getItem("coristaName");
+  // const coristaName = localStorage.getItem("coristaName");
 
-  if (coristaName) {
-    coristaNameParsed = JSON.parse(coristaName);
+  if (coristaNameParsed) {
+    // coristaNameParsed = JSON.parse(coristaName);
     hideMenu();
     notyf.open({
       type: "hello",
@@ -120,9 +120,7 @@ const getCoristas = async () => {
 };
 const selectField$$ = document.getElementById("coristas");
 
-checkCorista();
-getCoristas();
-getAllNames();
+
 
 const loadCoristas = (members) => {
   const sortedMembers = members.sort((a, b) => a.localeCompare(b));
@@ -168,6 +166,7 @@ async function setCorista() {
         message: "Ola, " + coristaData[0].name,
       });
       localStorage.setItem("coristaName", JSON.stringify(coristaData[0]));
+      await getAllNames();
     } else {
       console.error("Error al realizar la solicitud PUT");
     }
@@ -228,6 +227,9 @@ const sendVotes = async () => {
 };
 botonSetCorista$$.addEventListener("click", setCorista);
 sendVotesButton$$.addEventListener("click", sendVotes);
+checkCorista();
+getCoristas();
+
 
 // const loadCoristas = (members) => {
 //   const anonymousOption = "Anónimo";
