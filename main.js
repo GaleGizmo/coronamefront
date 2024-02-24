@@ -202,6 +202,8 @@ const sendVotes = async () => {
       },
       body: JSON.stringify(dataToSend),
     };
+    console.log("ID del corista antes de sendVotes:", coristaNameParsed._id);
+
     if (!coristaNameParsed || typeof coristaNameParsed._id === 'undefined') {
       console.error("Error: coristaNameParsed._id no está definido");
       return;
