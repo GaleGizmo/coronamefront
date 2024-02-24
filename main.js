@@ -154,7 +154,7 @@ async function setCorista() {
       body: JSON.stringify({ logged: true }),
     };
     const response = await fetch(
-      `http://localhost:8000/coristas/editCorista/${coristaId}`,
+      `https://coronamebackend.app.rockthebarrio.es/editCorista/${coristaId}`,
       options
     );
       console.log(response);
