@@ -202,8 +202,8 @@ const sendVotes = async () => {
       },
       body: JSON.stringify(dataToSend),
     };
-    const coristaId= coristaNameParsed._id || JSON.parse(localStorage.getItem("coristaName"))._id
-
+    const coristaId= JSON.parse(localStorage.getItem("coristaName"))._id
+    console.log(coristaId)
     
     const response = await fetch(
       `https://coronamebackend.app.rockthebarrio.es/nombres/addVoto/${coristaId}`,
