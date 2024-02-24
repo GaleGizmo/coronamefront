@@ -160,13 +160,13 @@ async function setCorista() {
     if (response.ok) {
       const data = await response.json(); console.log("Respuesta", data);
       coristaData[0].logged = true;
-
+      coristaNameParsed=coristaData[0]
       notyf.open({
         type: "hello",
-        message: "Ola, " + coristaData[0].name,
+        message: "Ola, " + coristaNameParsed.name,
       });
-      localStorage.setItem("coristaName", JSON.stringify(coristaData[0]));
-      await getAllNames();
+      localStorage.setItem("coristaName", JSON.stringify(coristaNameParsed));
+      
     } else {
       console.error("Error al realizar la solicitud PUT");
     }
@@ -229,7 +229,7 @@ botonSetCorista$$.addEventListener("click", setCorista);
 sendVotesButton$$.addEventListener("click", sendVotes);
 checkCorista();
 getCoristas();
-
+getAllNames();
 
 // const loadCoristas = (members) => {
 //   const anonymousOption = "Anónimo";
