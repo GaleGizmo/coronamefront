@@ -191,7 +191,7 @@ const sendVotes = async () => {
   try {
     const dataToSend = {
       votados: coristaNameParsed.namesVoted,
-      corista: coristaNameParsed._id,
+     
     };
 
     coristaNameParsed.voted = true;
@@ -203,10 +203,11 @@ const sendVotes = async () => {
       body: JSON.stringify(dataToSend),
     };
     const response = await fetch(
-      "https://coronamebackend.app.rockthebarrio.es/nombres/addVoto",
+      `https://coronamebackend.app.rockthebarrio.es/nombres/addVoto/${coristaNameParsed._id}`,
       options
     );
     const responseData = await response.json();
+    console.log("Respuesta:", responseData)
     notyf.success({
       message: responseData.message,
       duration: 2000,
