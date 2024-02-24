@@ -10,13 +10,12 @@ const notyf = new Notyf({
       background: "blue",
       icon: false,
       position: {
-        x: 'center',
-        y: 'top',
+        x: "center",
+        y: "top",
       },
     },
   ],
 });
-
 
 function checkCorista() {
   const coristaName = localStorage.getItem("coristaName");
@@ -34,7 +33,9 @@ function hideMenu() {
   menuCoristas.style.display = "none";
 }
 const getAllNames = async () => {
-  const data = await fetch("https://coronamebackend.app.rockthebarrio.es/nombres");
+  const data = await fetch(
+    "https://coronamebackend.app.rockthebarrio.es/nombres"
+  );
   const names = await data.json();
   if (typeof names != "string") {
     drawNames(names);
@@ -44,7 +45,7 @@ const drawNames = (names) => {
   const namesList$$ = document.getElementById("show_names");
   namesList$$.innerHTML = "";
 
-  const sortedNames = names.sort((a, b) =>{
+  const sortedNames = names.sort((a, b) => {
     if (a.points === b.points) {
       // Orden alfabético si los puntos son iguales
       return a.name.localeCompare(b.name);
@@ -88,7 +89,10 @@ const drawNames = (names) => {
   }
 };
 function toggleName(coroName) {
-  if (coristaNameParsed.namesVoted && coristaNameParsed.namesVoted.includes(coroName)) {
+  if (
+    coristaNameParsed.namesVoted &&
+    coristaNameParsed.namesVoted.includes(coroName)
+  ) {
     coristaNameParsed.namesVoted = coristaNameParsed.namesVoted.filter(
       (name) => name != coroName
     );
@@ -100,12 +104,15 @@ function toggleName(coroName) {
 let coristasList = null;
 
 const getCoristas = async () => {
-  const data = await fetch("https://coronamebackend.app.rockthebarrio.es/coristas");
+  const data = await fetch(
+    "https://coronamebackend.app.rockthebarrio.es/coristas"
+  );
   const coristas = await data.json();
   if (typeof coristas != "string") {
     coristasList = coristas;
-    const coristasNames = coristas
-      .filter((member) => member.name !== "Anónimo")
+    console.log(coristasList)
+    const coristasNames = coristasList
+      .filter((member) => member.name !== "Anónimo").filter((member)=>!member.logged)
       .map((el) => el.name);
 
     loadCoristas(coristasNames);
@@ -119,7 +126,7 @@ getAllNames();
 
 const loadCoristas = (members) => {
   const sortedMembers = members.sort((a, b) => a.localeCompare(b));
-
+  
   for (const member of sortedMembers) {
     const option = document.createElement("option");
     option.value = member;
@@ -131,16 +138,40 @@ const loadCoristas = (members) => {
 const botonSetCorista$$ = document.getElementById("set_corista");
 const sendVotesButton$$ = document.getElementById("send_votes");
 
-function setCorista() {
+async function setCorista() {
   hideMenu();
   const coristaData = coristasList.filter(
     (corista) => corista.name === selectField$$.value
   );
-    notyf.open({
-      type: "hello",
-      message: "Ola, " + coristaData[0].name,
-    })
-  localStorage.setItem("coristaName", JSON.stringify(coristaData[0]));
+
+  const coristaId = coristaData[0]._id;
+  try {
+    const options = {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ logged: true }),
+    };
+    const response = await fetch(
+      `http://localhost:8000/coristas/editCorista/${coristaId}`,
+      options
+    );
+      console.log(response);
+    if (response.ok) {
+      coristaData[0].logged = true;
+
+      notyf.open({
+        type: "hello",
+        message: "Ola, " + coristaData[0].name,
+      });
+      localStorage.setItem("coristaName", JSON.stringify(coristaData[0]));
+    } else {
+      console.error("Error al realizar la solicitud PUT");
+    }
+  } catch (error) {
+    console.error("Error en la solicitud PUT:", error);
+  }
 }
 
 const sendVotes = async () => {

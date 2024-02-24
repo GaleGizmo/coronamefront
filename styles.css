@@ -1,5 +1,5 @@
 body{
-  background-image: url("/NUEVOCORO/FRONTEND/corosinnombre.jpeg");
+  background-image: url("corosinnombre.jpeg");
   background-repeat: no-repeat;
   background-size: cover; /* o 'contain' según tus preferencias */
   background-attachment: fixed;
