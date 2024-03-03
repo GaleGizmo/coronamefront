@@ -62,11 +62,11 @@ body{
   border: 2px solid black;
   padding: 5px 10px;
 }
-.card_name:hover {
+/* .card_name:hover {
   cursor: pointer;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   transition: box-shadow 0.3s ease-in-out;
-}
+} */
 .points {
   background-color: rgba(237, 80, 80, 0.756);
   width: 15px;
@@ -105,6 +105,7 @@ main {
   background-color: green;
 }
 #select_name {
+  display: none;
   width: 100%;
   height: 100%;
   display: flex;

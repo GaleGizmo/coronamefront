@@ -18,10 +18,10 @@ const notyf = new Notyf({
 });
 
 function checkCorista() {
-  // const coristaName = localStorage.getItem("coristaName");
+ 
 
   if (coristaNameParsed) {
-    // coristaNameParsed = JSON.parse(coristaName);
+    
     hideMenu();
     notyf.open({
       type: "hello",
@@ -82,10 +82,10 @@ const drawNames = (names) => {
     // cardName$$.appendChild(motivo$$);
 
     namesList$$.appendChild(cardName$$);
-    cardName$$.addEventListener("click", () => {
-      toggleName(name._id);
-      cardName$$.classList.toggle("selected");
-    });
+    // cardName$$.addEventListener("click", () => {
+    //   toggleName(name._id);
+    //   cardName$$.classList.toggle("selected");
+    // });
   }
 };
 function toggleName(coroName) {
@@ -225,8 +225,18 @@ const sendVotes = async () => {
     console.error("Error en el envio:", err);
   }
 };
+const noMoreVotes=()=>{
+  notyf.error({
+    message: "Rematou o plazo para votar",
+    duration: 2000,
+    position: {
+      x: "center",
+      y: "top",
+    },
+  });
+}
 botonSetCorista$$.addEventListener("click", setCorista);
-sendVotesButton$$.addEventListener("click", sendVotes);
+sendVotesButton$$.addEventListener("click", noMoreVotes);
 checkCorista();
 getCoristas();
 getAllNames();
