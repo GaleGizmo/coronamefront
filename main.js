@@ -237,7 +237,8 @@ const noMoreVotes=()=>{
 }
 botonSetCorista$$.addEventListener("click", setCorista);
 sendVotesButton$$.addEventListener("click", noMoreVotes);
-checkCorista();
+// checkCorista();
+hideMenu()
 getCoristas();
 getAllNames();
 
