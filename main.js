@@ -7,7 +7,9 @@ const getAllNames = async () => {
       drawNames(names);
     }
   };
+  
   const drawNames = (names) => {
+    
     const namesList$$ = document.getElementById("show_names");
     namesList$$.innerHTML = "";
     const sortedNames = names.sort((a, b) => a.name.localeCompare(b.name));
@@ -18,6 +20,7 @@ const getAllNames = async () => {
       const corista$$ = document.createElement("h4");
       const by = document.createElement("p");
       const motivo$$ = document.createElement("p");
+   
       cardName$$.classList.add("mb-3");
       cardName$$.classList.add("card_name");
       by.classList.add("by");
@@ -28,6 +31,12 @@ const getAllNames = async () => {
       cardName$$.appendChild(name$$);
       cardName$$.appendChild(by);
       cardName$$.appendChild(corista$$);
+      if (name.points>0){
+        const votos= document.createElement("span")
+        votos.classList.add("votos")
+        votos.textContent=name.points;
+        cardName$$.appendChild(votos)
+       }
       cardName$$.appendChild(motivo$$);
   
       namesList$$.appendChild(cardName$$);
