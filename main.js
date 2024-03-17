@@ -1,7 +1,11 @@
 // import { Notyf } from 'notyf'
 
 const menuCoristas = document.getElementById("select_name");
-
+document.addEventListener('click.bs.modal', (event) => {
+  if (event.target.matches('.btn-secondary')) {
+    event.stopPropagation();
+  }
+});
 let coristaNameParsed = JSON.parse(localStorage.getItem("coristaName"));
 const header = document.getElementById("header");
 const notyf = new Notyf({
@@ -80,8 +84,7 @@ const drawNames = (names) => {
     toggleButton.classList.add("btn");
     toggleButton.classList.add("btn-secondary");
     toggleButton.classList.add("reason");
-    toggleButton.setAttribute("data-bs-toggle", "modal");
-    toggleButton.setAttribute("data-bs-target", `#modal-${name._id}`);
+   
 
     cardName$$.appendChild(name$$);
     cardName$$.appendChild(by);
@@ -109,8 +112,14 @@ const drawNames = (names) => {
     </div>
 `;
     namesList$$.insertAdjacentHTML("beforeend", modalContent);
+    toggleButton.addEventListener("click", (event) => {
+      event.stopPropagation()
+      const modalElement = document.getElementById(`modal-${name._id}`);
+      const modal = new bootstrap.Modal(modalElement);
+      modal.show();
+    });
 
-    name$$.addEventListener("click", () => {
+    cardName$$.addEventListener("click", () => {
       addToVoted(name._id, name.name);
     });
   }
@@ -194,6 +203,7 @@ async function addToVoted(nameId, nameSelected) {
       }
     }
     confirmationModal.show();
+
     
 
     // Si el usuario cancela, no hace nada

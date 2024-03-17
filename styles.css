@@ -169,7 +169,14 @@ body{
 .card_name>h4{
   padding: 0 10px;
 }
-.card_name>h2:hover {
+/* .card_name>h2:hover {
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  color: #cf6030;
+  background-color:rgb(245, 220, 220); ;
+  transition: box-shadow 0.3s ease-in-out, color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+} */
+.card_name:hover{
   cursor: pointer;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   color: #cf6030;
@@ -183,7 +190,9 @@ body{
   margin: 0 auto;
   padding: 10px;
   display: flex;
+  color: black !important;
   align-items: center;
+  font-weight: 600;
   justify-content: center;
   border: 2px solid black;
   border-radius: 60%;
