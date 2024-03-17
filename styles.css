@@ -1,3 +1,16 @@
+:root{
+  --3p-color:#1be31b;
+  --2p-color: #FFD700;
+  --1p-color:#6fd9f6;
+
+}
+body{
+  background-image: url("corosinnombre.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover; /* o 'contain' según tus preferencias */
+  background-attachment: fixed;
+   ;
+}
 .form {
   width: 20vw;
   min-width: 200px;
@@ -20,16 +33,19 @@
   display: flex;
   position: relative;
   justify-content: center;
-  padding: 0 20%;
 }
 #show_names {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
   width: fit-content;
-  padding-top: 10px;
+  padding-top: 70px;
   margin: 0 auto;
 }
 .header {
-  padding-top: 10px;
-  height: 70px;
+  display: none;
+  height: 90px;
   width: 100%;
   text-align: center;
   font-size: xx-large;
@@ -37,12 +53,140 @@
   top: 0;
   z-index: 10;
   color: #118df4;
-  background-color: #fff;
+  background-color: white;
+  border-bottom: 1px solid rgba(4, 1, 1, 0.766);
+}
+#send_votes{
+  margin-top: 10px;
+}
+.pointsButton{
+  font-size: 14px;
+  margin: 5px 10px;
+  border: 2px solid #010100;
+  border-radius: 10px;
+  padding: 15px;
+  color: #000;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+  font-weight: 700;
+}
+.pointsButton>span{
+  position: relative;
+  z-index: 5;
+}
+.pointsButton::after{
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 0px;
+  width: calc(100% - 10px);
+  
+  height: calc(100% + 0px);
+  background-color: #ffffff;
+  transition: all 0.5s ease-in-out;
+  transform: scaleX(1);
+}
+.pointsButton::before{
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: -2px;
+  width: calc(100% + 6px);
+  /*100% plus double the times left values*/
+  height: calc(100% - 10px);
+  background-color: #ffffff;
+  transition: all 0.5s ease-in-out;
+  transform: scaleY(1);
+}
+.pointsButton:hover::before{
+  transform: scaleY(0);
+}
+.pointsButton:hover::after{
+  transform: scaleX(0);
+}
+.selected {
+  background-color:var(--3p-color);
+  border-width: 2px;
+ 
+}
+.pointsButton.selected::before,
+.pointsButton.selected::after,
+.pointsButton.selected:hover::before,
+.pointsButton.selected:hover::after {
+  background-color:transparent;
+    transform: none;
+    transition: none;
+}
+
+.threePoints{
+ 
+  background-color: var(--3p-color)
+}
+.twoPoints{
+ 
+  background-color:var(--2p-color)
+}
+.onePoint{
+ 
+  background-color:var(--1p-color)
+}
+.disabledButton{
+  font-size: 14px;
+  margin: 5px 10px;
+  border: 2px solid #01010044;
+  border-radius: 10px;
+  padding: 15px;
+  color: #eeeeee;
+  background-color: #808080;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+  font-weight: 700;
 }
 .card_name {
-  width: 50%;
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  max-height: 200px;
+  height: auto;
+  background-color: white;
+  position: relative;
+  width: 250px;
+  border-radius: 10px;
+  border: 2px solid black;
+  padding: 0px 0px 5px 0px ;
+  box-shadow:5px 5px 10px rgba(15, 15, 15, 0.729);
+}
+.card_name>h2{
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  padding: 0 10px 5px 10px;
   border-bottom: 1px solid black;
+  width: 100%;
+  background-color: rgb(205, 202, 202);
+ 
+}
+.card_name>h4{
+  padding: 0 10px;
+}
+.card_name>h2:hover {
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  color: #cf6030;
+  background-color:rgb(245, 220, 220); ;
+  transition: box-shadow 0.3s ease-in-out, color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+.points {
+  background-color: rgba(237, 80, 80, 0.756);
+  width: 30px;
+  height: 30px;
+  margin: 0 auto;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid black;
+  border-radius: 60%;
 }
 .header-title {
   width: fit-content;
@@ -54,8 +198,21 @@
   font-weight: bold;
 }
 .by {
-  margin: 0;
+  width: 100%;
+  height: 15px;
+  margin: auto 0 0 0;
+  
   font-size: 12px;
+}
+.reason{
+  width: fit-content;
+  position: absolute;
+  bottom: 3px;
+  right: 3px;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 50%;
+  background-color: #cf6030;
 }
 main {
   margin-top: 70px;
@@ -66,17 +223,23 @@ main {
 .hidden {
   display: none;
 }
-.votos {
+
+
+#select_name {
+  /* display: none; */
+  width: 100%;
+  height: 100%;
+  padding-top: 50px;
   display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
-  justify-content: center;
-  margin: 0 auto;
-  width: 30px;
-  height: 30px;
-  color: red;
-  font-weight: 700;
-  border: 2px solid blue;
-  border-radius: 50%;
+  background-color: white;
+  z-index: 15;
+  position: fixed;
+  top: 0px;
+  left: 50%;
+  transform: translate(-50%);
 }
 @media (width<720px) {
   .form {
@@ -84,32 +247,70 @@ main {
     top: 0;
     width: 80%;
   }
+  #select_name{
+    top: 0px
+  }
   #names_container {
     flex-direction: column;
-    padding: 0 5%;
+    padding: 0;
   }
   .header {
     font-size: medium;
-    height: 30px;
+    height: 70px;
   }
-  .card_name {
-    width: 100%;
+  .reason{
+    height: 20px;
+    width: 20px;
+    padding: 1px;
+    border-radius: 50%;
+    
   }
-
+  .pointsButton{
+    font-size: 12px;
+    margin: 5px 5px;
+   
+    padding: 7px;
+    color: #000;
+   
+    letter-spacing: normal;
+   
+  }
+  .disabledButton{
+    font-size: 12px;
+    margin: 5px 5px;
+    
+    padding: 7px;
+   
+    letter-spacing: normal;
+    
+  }
   .hidden {
     display: block;
   }
   .shown {
     display: none;
   }
-
+  h2{
+    font-size: 14px;
+  }
+  h4{
+    font-size: 12px;
+  }
+.card_name{
+  width: 100px;
+}
+#send_votes{
+font-size: 12px;
+}
   /* form > div {
-      display: none;
-    }
-    form > .btn {
-      display: none;
-    } */
+    display: none;
+  }
+  form > .btn {
+    display: none;
+  } */
   #show_names {
-    padding-top: 50px;
+    
+    gap: 5px;
+    padding: 30px 0 0 0;
   }
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,72 +8,52 @@
       rel="stylesheet"
       crossorigin="anonymous"
     />
-    <!-- En tu archivo HTML -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
     <link
       href="node_modules/bootstrap-icons/font/bootstrap-icons.css"
       rel="stylesheet"
     />
 
     <link rel="stylesheet" href="styles.css" />
-    <title>TORMENTA DE IDEAS</title>
-    <script src="main.js" defer></script>
+    <title>VOTACION RONDA 2</title>
+    
     <meta name="robots" content="noindex, nofollow" />
   </head>
   <body>
-    <header class="header">
-      <div class="header-title">NOMES PARA O CORO</div>
+    <header id="header" class="header">
+      <!-- <div class="header-title">NOMES PARA O CORO</div> -->
+      <button id="sendThreePoints" class="  pointsButton threePoints"><span>Dar 3 puntos </span></button>
+      <button id="sendTwoPoints" class="  pointsButton twoPoints"><span>Dar 2 puntos </span></button>
+      <button id="sendOnePoint" class="  pointsButton onePoint"><span>Dar 1 punto </span></button>
     </header>
     <main class="container-fluid" id="main">
-      <div id="names_container">
-        <form class="form" id="names_form">
-          <i class="icon-add hidden">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
-              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z"/>
-            </svg>
-          </i>
-          <!-- Campo input con el nombre propuesto-->
-          <div id="name_div" class="mb-3 shown">
-            <label class="form-label" id="choir_name_label"
-              >Nome suxerido:</label
-            >
-            <input
-              class="form-control"
-              type="text"
-              id="choir_name"
-              name="choir_name"
-              placeholder="Suxiro o nome..."
-              required
-            />
-          </div>
-
-          <!-- Menú desplegable con los coristas-->
-          <div id="corista_div" class="mb-3 shown">
-            <label class="form-label" id="choir_member_label">Corista:</label>
-            <select
-              class="form-select"
-              id="choir_member"
-              name="choir_member"
-            ></select>
-          </div>
-
-          <!-- Campo de área de texto para motivo del nombre-->
-          <div id="motivo_div" class="mb-3 shown">
-            <label class="form-label" id="name_reason_label">Motivo:</label>
-            <textarea
-              class="form-control"
-              id="name_reason"
-              name="name_reason"
-              rows="4"
-              placeholder="Gústame este nome porque..."
-            ></textarea>
-          </div>
-
-          <button class="btn btn-primary shown" id="send_name" type="submit">
-            Enviar
-          </button>
-        </form>
-        <div class="container text-center" id="show_names"></div>
+      <div id="select_name">
+        <h2>Escolle o teu nome da lista</h2>
+        <select id="coristas" class="form-select w-auto"></select>
+        <button id="set_corista" class="btn btn-primary mt-5">Confirmar</button>
       </div>
+      <div id="names_container">
+        
+        <div class="container-fluid text-center" id="show_names"></div>
+      </div>
+      <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="confirmationModalLabel">Confirmación</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div id="modal_message" class="modal-body  text-center">
+              
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" id="cancelButton" data-bs-dismiss="modal">Cancelar</button>
+              <button type="button" class="btn btn-primary" id="confirmButton">Confirmar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
     </main>
 
     <script
@@ -81,5 +61,7 @@
       integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+    <script src="main.js" ></script>
   </body>
 </html>
