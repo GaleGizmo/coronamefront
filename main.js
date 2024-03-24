@@ -121,8 +121,10 @@ const drawNames = (names) => {
 
     cardName$$.addEventListener("click", noMoreVotes);
   }
-  
+  setTimeout(() => {
     namesToColor()
+}, 2000);
+    
   
 
 
@@ -398,7 +400,7 @@ botonSetCorista$$.addEventListener("click", setCorista);
 // });
 
 function setVotedColor (points, divToColor) {
-  console.log(points, divToColor);
+
   switch (points) {
     case 3:
       updateNameDivStyle(  "#1be31b", divToColor);
