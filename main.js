@@ -119,9 +119,7 @@ const drawNames = (names) => {
       modal.show();
     });
 
-    cardName$$.addEventListener("click", () => {
-      addToVoted(name._id, name.name);
-    });
+    cardName$$.addEventListener("click", noMoreVotes);
   }
   
     namesToColor()
@@ -281,9 +279,9 @@ const loadCoristas = (members) => {
 };
 
 const botonSetCorista$$ = document.getElementById("set_corista");
-const sendThreePointsButton$$ = document.getElementById("sendThreePoints");
-const sendTwoPointsButton$$ = document.getElementById("sendTwoPoints");
-const sendOnePointButton$$ = document.getElementById("sendOnePoint");
+// const sendThreePointsButton$$ = document.getElementById("sendThreePoints");
+// const sendTwoPointsButton$$ = document.getElementById("sendTwoPoints");
+// const sendOnePointButton$$ = document.getElementById("sendOnePoint");
 async function setCorista() {
   hideMenu();
   const coristaData = coristasList.filter(
@@ -350,25 +348,25 @@ const sendVotes = async (votado) => {
         y: "top",
       },
     });
-    localStorage.setItem(
-      "coristaName",
-      JSON.stringify(responseData.coristaName)
-    );
+    // localStorage.setItem(
+    //   "coristaName",
+    //   JSON.stringify(responseData.coristaName)
+    // );
 
   } catch (err) {
     console.error("Error en el envio:", err);
   }
 };
-// const noMoreVotes=()=>{
-//   notyf.error({
-//     message: "Rematou o plazo para votar",
-//     duration: 2000,
-//     position: {
-//       x: "center",
-//       y: "top",
-//     },
-//   });
-// }
+const noMoreVotes=()=>{
+  notyf.error({
+    message: "Rematou o prazo para votar",
+    duration: 2000,
+    position: {
+      x: "center",
+      y: "top",
+    },
+  });
+}
 const setPointsToSend = (points) => {
   if (JSON.parse(localStorage.getItem("pointsToSend")) == points) {
     points = 0;
@@ -379,25 +377,25 @@ const setPointsToSend = (points) => {
 
 botonSetCorista$$.addEventListener("click", setCorista);
 
-sendThreePointsButton$$.addEventListener("click", () => {
-  setPointsToSend(3);
-  sendThreePointsButton$$.classList.toggle("selected");
+// sendThreePointsButton$$.addEventListener("click", () => {
+//   setPointsToSend(3);
+//   sendThreePointsButton$$.classList.toggle("selected");
  
-  sendTwoPointsButton$$.classList.remove("selected");
-  sendOnePointButton$$.classList.remove("selected");
-});
-sendTwoPointsButton$$.addEventListener("click", () => {
-  setPointsToSend(2);
-  sendTwoPointsButton$$.classList.toggle("selected");
-  sendThreePointsButton$$.classList.remove("selected");
-  sendOnePointButton$$.classList.remove("selected");
-});
-sendOnePointButton$$.addEventListener("click", () => {
-  setPointsToSend(1);
-  sendOnePointButton$$.classList.toggle("selected");
-  sendTwoPointsButton$$.classList.remove("selected");
-  sendThreePointsButton$$.classList.remove("selected");
-});
+//   sendTwoPointsButton$$.classList.remove("selected");
+//   sendOnePointButton$$.classList.remove("selected");
+// });
+// sendTwoPointsButton$$.addEventListener("click", () => {
+//   setPointsToSend(2);
+//   sendTwoPointsButton$$.classList.toggle("selected");
+//   sendThreePointsButton$$.classList.remove("selected");
+//   sendOnePointButton$$.classList.remove("selected");
+// });
+// sendOnePointButton$$.addEventListener("click", () => {
+//   setPointsToSend(1);
+//   sendOnePointButton$$.classList.toggle("selected");
+//   sendTwoPointsButton$$.classList.remove("selected");
+//   sendThreePointsButton$$.classList.remove("selected");
+// });
 
 function setVotedColor (points, divToColor) {
   console.log(points, divToColor);

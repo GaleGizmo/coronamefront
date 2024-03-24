@@ -199,12 +199,13 @@ body{
 }
 .header-title {
   width: fit-content;
-  margin: 0 auto;
+  margin: 10px auto;
   border: 3px solid rgb(123, 157, 220);
   border-radius: 12px;
   padding: 0 10px;
   background-color: #fff;
-  font-weight: bold;
+  box-shadow:5px 5px 5px rgba(10, 10, 10, 0.529);
+   font-weight: bold;
 }
 .by {
   width: 100%;
