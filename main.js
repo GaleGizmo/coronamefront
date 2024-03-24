@@ -401,36 +401,36 @@ function setVotedColor (points, divToColor) {
   console.log(points, divToColor);
   switch (points) {
     case 3:
-      updateButtonStyle(sendThreePointsButton$$, true, "#1be31b", divToColor);
+      updateNameDivStyle(  "#1be31b", divToColor);
       break;
     case 2:
-      updateButtonStyle(sendTwoPointsButton$$, true, "#FFD700", divToColor);
+      updateNameDivStyle(  "#FFD700", divToColor);
       break;
     case 1:
-      updateButtonStyle(sendOnePointButton$$, true, "#6fd9f6", divToColor);
+      updateNameDivStyle(  "#6fd9f6", divToColor);
       break;
-    case -3:
-      updateButtonStyle(sendThreePointsButton$$, false, "#ffffff", divToColor);
-      break;
-    case -2:
-      updateButtonStyle(sendTwoPointsButton$$, false, "#ffffff", divToColor);
-      break;
-    case -1:
-      updateButtonStyle(sendOnePointButton$$, false, "#ffffff", divToColor);
-      break;
+    // case -3:
+    //   updateNameDivStyle( false, "#ffffff", divToColor);
+    //   break;
+    // case -2:
+    //   updateNameDivStyle( false, "#ffffff", divToColor);
+    //   break;
+    // case -1:
+    //   updateNameDivStyle( false, "#ffffff", divToColor);
+    //   break;
   }
 }
-function updateButtonStyle(button, disabled, backgroundColor, element) {
-  button.disabled = disabled;
+function updateNameDivStyle( backgroundColor, element) {
+  // button.disabled = disabled;
   element.style.backgroundColor = backgroundColor;
-  if (disabled) {
-    button.classList.remove("pointsButton");
-    button.classList.add("disabledButton");
-  } else {
-    button.removeAttribute("disabled");
-    button.classList.add("pointsButton");
-    button.classList.remove("disabledButton");
-  }
+  // if (disabled) {
+  //   button.classList.remove("pointsButton");
+  //   button.classList.add("disabledButton");
+  // } else {
+  //   button.removeAttribute("disabled");
+  //   button.classList.add("pointsButton");
+  //   button.classList.remove("disabledButton");
+  // }
 }
 // sendVotesButton$$.addEventListener("click", noMoreVotes);
 checkCorista();
