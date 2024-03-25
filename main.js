@@ -30,7 +30,7 @@ function checkCorista() {
       type: "hello",
       message: "Ola, " + coristaNameParsed.name,
     });
-    
+    getAllNames()
   } else getCoristas()
 }
 function hideMenu() {
