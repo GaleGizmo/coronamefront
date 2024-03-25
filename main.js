@@ -26,10 +26,11 @@ let nameToModify;
 function checkCorista() {
   if (coristaNameParsed) {
     hideMenu();
-    // notyf.open({
-    //   type: "hello",
-    //   message: "Ola, " + coristaNameParsed.name,
-    // });
+    notyf.open({
+      type: "hello",
+      message: "Ola, " + coristaNameParsed.name,
+    });
+    
   } else getCoristas()
 }
 function hideMenu() {
@@ -121,9 +122,9 @@ const drawNames = (names) => {
 
     cardName$$.addEventListener("click", noMoreVotes);
   }
-  setTimeout(() => {
+  
     namesToColor()
-}, 2000);
+
     
   
 
@@ -315,6 +316,7 @@ async function setCorista() {
         message: "Ola, " + coristaNameParsed.name,
       });
       localStorage.setItem("coristaName", JSON.stringify(coristaNameParsed));
+      await getAllNames()
     } else {
       console.error("Error al realizar la solicitud PUT");
     }
@@ -438,5 +440,5 @@ function updateNameDivStyle( backgroundColor, element) {
 checkCorista();
 
 // getCoristas();
-getAllNames();
+// getAllNames();
 
